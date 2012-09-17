@@ -6,8 +6,8 @@
 #include "osm_linux.h"
 #include "hptintf.h"
 
-MODULE_AUTHOR ("HighPoint Technologies, Inc.");
-MODULE_DESCRIPTION ("RAID driver");
+MODULE_AUTHOR ("HighPoint Technologies, Inc. hacked by doctaweeks");
+MODULE_DESCRIPTION ("rr174x RAID driver");
 
 static int autorebuild = 0;
 #if LINUX_VERSION_CODE > KERNEL_VERSION(2,5,0)

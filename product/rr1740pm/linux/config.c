@@ -23,7 +23,7 @@ int init_config(void)
 
 char driver_name[] = "rr174x";
 char driver_name_long[] = "RocketRAID 174x controller driver";
-char driver_ver[] = "v2.4 (" __DATE__ " " __TIME__ ")";
+char driver_ver[] = "v2.4.1-test (" __DATE__ " " __TIME__ ")";
 int  osm_max_targets = 32;
 
 int os_max_cache_size = 0x1000000;
