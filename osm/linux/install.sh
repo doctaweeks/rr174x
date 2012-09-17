@@ -72,6 +72,14 @@ else
 	exit 1
 fi
 
+if [ -z $BUILD_INITRD ]; then
+	BUILD_INITRD=1
+fi
+
+if [ $BUILD_INITRD -eq 0 ]; then
+	exit 0
+fi
+
 MKINITRD=NO
 ( which mkinitrd > /dev/null 2> /dev/null ) && MKINITRD=`which mkinitrd`
 ( which mkinitramfs > /dev/null 2> /dev/null ) && MKINITRD=`which mkinitramfs`
