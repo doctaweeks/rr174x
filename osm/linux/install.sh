@@ -2,6 +2,7 @@
 
 if test "${KERNEL_VER-set}" = set; then echo "KERNEL_VER is not set"; exit 1; fi
 if test "${TARGETNAME-set}" = set; then echo "TARGETNAME is not set"; exit 1; fi
+if test "${KERNEL_MAJOR-set}" = set; then echo "KERNEL_MAJOR is not set"; exit 1; fi
 
 PWD=`pwd`
 
@@ -13,6 +14,12 @@ case ${KERNEL_VER} in
 	2.6 )
 	OBJ=ko
 	MODVER=`modinfo -F vermagic ${PWD}/${TARGETNAME}.${OBJ} | cut -d' ' -f1`
+	;;
+	*)
+	if [ "${KERNEL_MAJOR}" = "3" ]; then
+		OBJ=ko
+		MODVER=`modinfo -F vermagic ${PWD}/${TARGETNAME}.${OBJ} | cut -d' ' -f1`
+	fi
 	;;
 esac
 
