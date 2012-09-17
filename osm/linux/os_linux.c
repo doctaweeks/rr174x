@@ -259,9 +259,11 @@ void refresh_sd_flags(PVBUS_EXT vbus_ext)
 				for (minor=0; minor<=240; minor+=16) {
 					struct block_device *bdev = bdget(MKDEV(major[i], minor));
 					if (bdev &&
-#if LINUX_VERSION_CODE >= KERNEL_VERSION(2,6,28)
+#if LINUX_VERSION_CODE >= KERNEL_VERSION(2,6,38)
+						blkdev_get(bdev, FMODE_READ, 0)
+#elif LINUX_VERSION_CODE >= KERNEL_VERSION(2,6,28)
 						blkdev_get(bdev, FMODE_READ)
-#else 
+#else
 						blkdev_get(bdev, FMODE_READ, 0 __BDEV_RAW)
 #endif
 						==0) {

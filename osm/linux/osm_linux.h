@@ -8,9 +8,9 @@
 
 /* system headers */
 
-#ifndef AUTOCONF_INCLUDED
+/*#ifndef AUTOCONF_INCLUDED
 #include <linux/config.h>
-#endif
+#endif*/
 
 #include <linux/version.h>
 
