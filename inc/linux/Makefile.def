@@ -74,8 +74,18 @@ ifndef KERNELDIR
 KERNELDIR := /lib/modules/$(shell uname -r)/build
 endif
 
+ifeq ($(wildcard $(KERNELDIR)/include/linux/version.h),)
+else
 KERNEL_MAJOR := $(shell expr `grep LINUX_VERSION_CODE $(KERNELDIR)/include/linux/version.h | cut -d\  -f3` / 65536)
 KERNEL_MINOR := $(shell expr `grep LINUX_VERSION_CODE $(KERNELDIR)/include/linux/version.h | cut -d\  -f3` / 256 % 256)
+endif
+
+ifeq ($(wildcard $(KERNELDIR)/include/generated/uapi/linux/version.h),)
+else
+KERNEL_MAJOR := $(shell expr `grep LINUX_VERSION_CODE $(KERNELDIR)/include/generated/uapi/linux/version.h | cut -d\  -f3` / 65536)
+KERNEL_MINOR := $(shell expr `grep LINUX_VERSION_CODE $(KERNELDIR)/include/generated/uapi/linux/version.h | cut -d\  -f3` / 256 % 256)
+endif
+
 KERNEL_VER := $(KERNEL_MAJOR).$(KERNEL_MINOR)
 
 ifeq ($(KERNEL_VER),)
