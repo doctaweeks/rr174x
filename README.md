@@ -1,6 +1,6 @@
 * Compiled without error against 3.7.3 and run continuously for more than 60 days without issue
 
-* Compiled without error against 3.8.8
+* Compiled without error against 3.8.10
 
 Some fixes from: http://ubuntuforums.org/showpost.php?p=11489018
 
